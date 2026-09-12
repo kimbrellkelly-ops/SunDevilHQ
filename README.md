@@ -1,18 +1,22 @@
-# Griz HQ automatic updates
+# Griz HQ Officiating Intelligence — ingestion engine v0.1
 
-Upload the files in this package to the root of your GitHub Pages repository.
+This is a standalone data-layer prototype. It does NOT modify Griz HQ production files.
 
-The GitHub Action refreshes `data.json` twice per hour from official/public sources. It updates:
-- Montana schedule and completed results
-- overall and Big Sky record
-- next opponent/date/time
-- AFCA Coaches Poll and Stats Perform Top 25
-- FCS Top 25 data used by the Scores tab
-- official Montana football news
-- core cumulative stats from GoGriz
+## Purpose
+Parse text exported from a GoGriz football box score into:
+- seven-man officials
+- official penalty summary
+- individual penalty-event candidates
+- explicit replay events
+- validation flags
 
-The site also checks `data.json` every 5 minutes while a visitor has the site open, so the updated information can appear without a manual browser refresh.
+## Safety
+The engine intentionally does not auto-publish a game. It emits:
+- READY_FOR_EVENT_RECONCILIATION
+- REQUIRES_RECONCILIATION
+- FAIL
 
-The workflow can also be run manually from GitHub: Actions -> Refresh Griz HQ data -> Run workflow.
+A later publisher should only accept a record after its event-level penalties reconcile with the official summary or a documented exception is approved.
 
-Keep your existing `CNAME` and any other repository files not included here.
+## Next milestone
+Run the parser against raw page text for Southern Utah 2026, Drake 2026, Idaho 2025, then a fourth game. Improve parsing only when a real source variation requires it.
