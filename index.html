@@ -1355,3 +1355,37 @@ document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
 })();
 </script>
+<script id="scoreboard-button-final-repair">
+(function(){
+  function install(){
+    const bar=document.querySelector('.v2-scorebar');
+    const games=document.getElementById('score-games');
+    if(!bar||!games||bar.dataset.buttonRepair==='1') return;
+    bar.dataset.buttonRepair='1';
+    const prev=bar.querySelector('.v2-score-prev');
+    const next=bar.querySelector('.v2-score-next');
+    const amount=()=>Math.max(260,Math.round(games.clientWidth*.78));
+    function move(delta){
+      games.scrollLeft=Math.max(0,Math.min(games.scrollWidth-games.clientWidth,games.scrollLeft+delta));
+      games.dispatchEvent(new Event('scroll'));
+    }
+    bar.addEventListener('click',function(e){
+      const b=e.target.closest('.v2-score-prev, .v2-score-next');
+      if(!b) return;
+      e.preventDefault();
+      e.stopPropagation();
+      move(b.classList.contains('v2-score-prev')?-amount():amount());
+    },true);
+    function update(){
+      const max=Math.max(0,games.scrollWidth-games.clientWidth);
+      if(prev) prev.disabled=games.scrollLeft<=1;
+      if(next) next.disabled=games.scrollLeft>=max-1;
+    }
+    games.addEventListener('scroll',update,{passive:true});
+    window.addEventListener('resize',update);
+    setTimeout(update,50);setTimeout(update,500);
+  }
+  install();
+  setTimeout(install,300);setTimeout(install,1000);
+})();
+</script>
