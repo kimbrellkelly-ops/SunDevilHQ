@@ -1196,31 +1196,46 @@ document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click
 <script>
 (function(){
   const strip=document.querySelector('.v2-scorebar');
-  if(!strip || strip.dataset.edgeScrollReady==='1') return;
-  strip.dataset.edgeScrollReady='1';
+  if(!strip || strip.dataset.edgeScrollReady==='2') return;
+  strip.dataset.edgeScrollReady='2';
   const next=strip.querySelector('.v2-score-next');
   let raf=0, speed=0;
-  function stop(){speed=0;strip.classList.remove('is-edge-scrolling');if(raf){cancelAnimationFrame(raf);raf=0;}}
+  function stop(){
+    speed=0;
+    strip.classList.remove('is-edge-scrolling');
+    if(raf){cancelAnimationFrame(raf);raf=0;}
+  }
   function tick(){
     if(!speed){raf=0;return;}
-    strip.scrollLeft+=speed;
+    const before=strip.scrollLeft;
+    strip.scrollLeft += speed;
+    if(strip.scrollLeft===before || strip.scrollLeft<=0 || strip.scrollLeft>=strip.scrollWidth-strip.clientWidth){
+      if((speed<0 && strip.scrollLeft<=0)||(speed>0 && strip.scrollLeft>=strip.scrollWidth-strip.clientWidth)){stop();return;}
+    }
     raf=requestAnimationFrame(tick);
   }
   function start(v){
     speed=v;
-    strip.classList.toggle('is-edge-scrolling',!!v);
-    if(v&&!raf) raf=requestAnimationFrame(tick);
-    if(!v&&raf){cancelAnimationFrame(raf);raf=0;}
+    strip.classList.add('is-edge-scrolling');
+    if(!raf) raf=requestAnimationFrame(tick);
   }
-  strip.addEventListener('mousemove',function(e){
-    const r=strip.getBoundingClientRect(), edge=Math.min(110,Math.max(55,r.width*.16));
-    if(e.clientX<r.left+edge) start(-Math.max(1.5,((r.left+edge-e.clientX)/edge)*4));
-    else if(e.clientX>r.right-edge) start(Math.max(1.5,((e.clientX-(r.right-edge))/edge)*4));
+  document.addEventListener('mousemove',function(e){
+    const r=strip.getBoundingClientRect();
+    const insideY=e.clientY>=r.top && e.clientY<=r.bottom;
+    if(!insideY){stop();return;}
+    const edge=85;
+    const nearLeft=e.clientX<=edge || e.clientX<=r.left+edge;
+    const nearRight=e.clientX>=window.innerWidth-edge || e.clientX>=r.right-edge;
+    if(nearLeft && strip.scrollLeft>0) start(-5);
+    else if(nearRight && strip.scrollLeft<strip.scrollWidth-strip.clientWidth-1) start(5);
     else stop();
   });
   strip.addEventListener('mouseleave',stop);
   strip.addEventListener('wheel',function(e){
-    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();strip.scrollLeft+=e.deltaY;}
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
+      e.preventDefault();
+      strip.scrollLeft += e.deltaY;
+    }
   },{passive:false});
   if(next){
     next.addEventListener('click',function(){
@@ -1229,6 +1244,8 @@ document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click
     });
     next.setAttribute('title','Show more scores');
   }
+  // Always begin at the first game when the page is freshly loaded.
+  requestAnimationFrame(()=>{strip.scrollLeft=0;});
 })();
 </script>
 
