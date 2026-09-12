@@ -1332,3 +1332,26 @@ document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click
 </script>
 </body>
 </html>
+
+<script id="scoreboard-scroll-final-fix">
+(function(){
+  function setup(){
+    const bar=document.querySelector('.v2-scorebar');
+    const scroller=document.getElementById('score-games');
+    if(!bar||!scroller||scroller.dataset.finalScrollFix==='1') return;
+    scroller.dataset.finalScrollFix='1';
+    const prev=bar.querySelector('.v2-score-prev');
+    const next=bar.querySelector('.v2-score-next');
+    const move=(amount)=>scroller.scrollBy({left:amount,behavior:'smooth'});
+    prev&&prev.addEventListener('click',()=>move(-430));
+    next&&next.addEventListener('click',()=>move(430));
+    scroller.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();scroller.scrollLeft+=e.deltaY;}},{passive:false});
+    let down=false,startX=0,startLeft=0;
+    scroller.addEventListener('pointerdown',e=>{if(e.target.closest('a,button')&&e.pointerType==='mouse')return;down=true;startX=e.clientX;startLeft=scroller.scrollLeft;scroller.setPointerCapture&&scroller.setPointerCapture(e.pointerId);});
+    scroller.addEventListener('pointermove',e=>{if(!down)return;scroller.scrollLeft=startLeft-(e.clientX-startX);});
+    const stop=e=>{down=false;try{scroller.releasePointerCapture&&scroller.releasePointerCapture(e.pointerId);}catch(_) {}};
+    scroller.addEventListener('pointerup',stop);scroller.addEventListener('pointercancel',stop);scroller.addEventListener('pointerleave',()=>{down=false;});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+})();
+</script>
