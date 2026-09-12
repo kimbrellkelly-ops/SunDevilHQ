@@ -46,7 +46,13 @@
       <a data-tab-link="stats" href="#stats">Stats</a>
       <a data-tab-link="schedule" href="#big-sky">Big Sky</a>
       <a data-tab-link="media" href="#media">Media</a>
-      <a data-tab-link="history" href="#history">More⌄</a>
+      <div class="v2-more-menu">
+        <button class="v2-more-trigger" type="button" aria-expanded="false" aria-controls="v2-more-dropdown">More <span aria-hidden="true">⌄</span></button>
+        <div class="v2-more-dropdown" id="v2-more-dropdown" hidden>
+          <a data-tab-link="history" href="#history">History <span aria-hidden="true">›</span></a>
+          <a data-tab-link="officiating" href="#officiating">Officiating <span aria-hidden="true">›</span></a>
+        </div>
+      </div>
     </nav>
     <a class="v2-go-griz" href="https://gogriz.com/" target="_blank" rel="noopener">🐾 Go Griz</a>
   </div>
@@ -69,13 +75,17 @@
       <div class="v2-card-heading"><span>↗</span><h2>Quick Links</h2></div>
       <a href="#next-up">Next Game <b>›</b></a>
       <a href="#schedule">Schedule <b>›</b></a>
-      <a href="#scores">Scores <b>›</b></a>
-      <a href="#rankings">Rankings <b>›</b></a>
-      <a href="#roster">Roster + Depth <b>›</b></a>
-      <a href="#stats">Team Stats <b>›</b></a>
+      <a href="#roster">Roster <b>›</b></a>
+      <a href="#roster">Depth Chart <b>›</b></a>
+      <a href="#roster">Recruiting <b>›</b></a>
+      <a href="#roster">Transfer Portal <b>›</b></a>
       <a href="#big-sky">Big Sky <b>›</b></a>
+      <a href="#rankings">Rankings <b>›</b></a>
+      <a href="#stats">Stats <b>›</b></a>
+      <a href="#news">News <b>›</b></a>
       <a href="#media">Media <b>›</b></a>
       <a href="#history">The Vault <b>›</b></a>
+      <a class="v2-rail-cta" href="https://gogriz.com/" target="_blank" rel="noopener">🐾 Go Griz</a>
     </aside>
     <section class="v2-center">
       <div class="v2-feature v2-card">
@@ -94,7 +104,7 @@
       <section class="v2-next-card"><div class="v2-next-top"><b>Next Game</b><a href="#next-up">Game Center →</a></div><div class="v2-next-match"><div><strong>GRIZ</strong><small>MONTANA<br>2–0</small></div><div><b>Sat, Sep 12<br>12:00 PM MT</b><small>ESPN+</small></div><div><strong>UT</strong><small>UTAH TECH<br>0–2</small></div></div><small>Washington-Grizzly Stadium · Missoula, MT</small></section>
     </aside>
   </div>
-
+  <section class="v2-lower-news v2-card"><div class="v2-card-heading"><h2>Latest Griz News</h2><a href="#news">Open Newsroom →</a></div><div class="v2-lower-news-grid"><a href="#news">Game week: everything you need to know</a><a href="#news">Depth chart and roster updates</a><a href="#news">Big Sky and FCS news roundup</a><a href="#news">Podcasts, videos and interviews</a></div></section>
 </section>
 <section class="section tab-panel" data-tab="schedule" id="big-sky"><div class="section-head"><div class="eyebrow">AROUND THE LEAGUE</div><h2>2026 Big Sky Football</h2><span>All Big Sky teams • conference &amp; non-conference</span></div><div class="bigsky-tools"><label>TEAM<select id="bigsky-team-filter"><option value="ALL">ALL TEAMS</option></select></label><label>WEEK<select id="bigsky-date-filter"><option value="ALL">CURRENT WEEK</option></select></label></div><div class="bigsky-table" id="bigsky-table">Loading Big Sky schedule…</div><div class="schedule-source">Source: <a href="https://bigskyconf.com/news/2026/7/6/big-sky-announces-kickoff-times-for-2026-conference-football-season.aspx" rel="noopener" target="_blank">Big Sky Conference ↗</a></div></section>
 <section class="section tab-panel ghq-next-up" data-tab="game" id="next-up">
@@ -1162,6 +1172,24 @@ function render(){const q=search.value.trim().toLowerCase();const arr=roster.fil
 function openPlayer(name){const p=roster.find(x=>x.name===name);if(!p)return;const prof=statProfiles[p.name];document.getElementById('roster-modal-number').textContent=`#${p.n}`;document.getElementById('roster-modal-kicker').textContent=`${unit(p.pos).toUpperCase()} · ${p.pos} · ${rosterStatus(p).toUpperCase()}`;document.getElementById('roster-modal-name').textContent=p.name;document.getElementById('roster-modal-meta').textContent=`${p.year} · ${p.ht} · ${p.wt}`;const mp=document.getElementById('roster-modal-photo');const pphoto=photoFor(p);mp.src=pphoto||'';mp.alt=pphoto?`${p.name} official roster photo`:'';mp.style.display=pphoto?'block':'none';mp.onerror=()=>{mp.style.display='none';};document.getElementById('roster-modal-body').innerHTML=`<div><b>Hometown</b><span>${p.home}</span></div><div><b>Previous school</b><span>${p.school}</span></div><div><b>Roster status</b><span>${rosterStatus(p)}${twoDeep.has(p.name)?' · Listed in current two-deep':''}</span></div>${prof?`<div class="stat-feature"><b>2026 SNAPSHOT</b><span>${prof.now}</span></div><div class="stat-feature"><b>2025 / PRIOR PROFILE</b><span>${prof.prior}</span></div><div class="stat-feature wide"><b>GRIZ HQ TAKE</b><span>${prof.note}</span></div>`:''}`;const official=document.getElementById('roster-modal-official');official.href='https://gogriz.com/sports/football/roster';const m=document.getElementById('roster-player-modal');m.classList.add('open');m.setAttribute('aria-hidden','false');document.body.classList.add('roster-modal-open')}
 function close(){const m=document.getElementById('roster-player-modal');m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.classList.remove('roster-modal-open')}
 document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.roster-filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');active=b.dataset.filter;render()}));search.addEventListener('input',render);document.querySelectorAll('[data-close-roster]').forEach(x=>x.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});document.querySelectorAll('[data-roster-jump]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.roster-section-nav-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');const target=document.getElementById(b.dataset.rosterJump);if(target)target.scrollIntoView({behavior:'smooth',block:'start'});}));renderRosterFeatures();render();
+})();
+</script>
+
+<script>
+(function(){
+  const menu=document.querySelector('.v2-more-menu');
+  const trigger=document.querySelector('.v2-more-trigger');
+  const dropdown=document.getElementById('v2-more-dropdown');
+  if(!menu||!trigger||!dropdown) return;
+  function close(){ dropdown.hidden=true; trigger.setAttribute('aria-expanded','false'); }
+  trigger.addEventListener('click',function(e){
+    e.preventDefault();
+    const open=dropdown.hidden;
+    dropdown.hidden=!open;
+    trigger.setAttribute('aria-expanded',String(open));
+  });
+  document.addEventListener('click',function(e){ if(!menu.contains(e.target)) close(); });
+  dropdown.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
 })();
 </script>
 </body>
