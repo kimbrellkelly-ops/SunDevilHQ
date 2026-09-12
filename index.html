@@ -1298,5 +1298,32 @@ document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click
   group.addEventListener('change',render);week.addEventListener('change',render);render();
 })();
 </script>
+
+<script id="final-scoreboard-scroll-repair">
+(function(){
+  function wire(){
+    const games=document.getElementById('score-games');
+    const bar=document.querySelector('.v2-scorebar');
+    if(!games||!bar||games.dataset.finalScroll==='1') return;
+    games.dataset.finalScroll='1';
+    const prev=bar.querySelector('.v2-score-prev');
+    const next=bar.querySelector('.v2-score-next');
+    const amount=()=>Math.max(260,Math.floor(games.clientWidth*.8));
+    function move(n){games.scrollBy({left:n,behavior:'smooth'});}
+    prev?.addEventListener('click',()=>move(-amount()),true);
+    next?.addEventListener('click',()=>move(amount()),true);
+    games.addEventListener('wheel',e=>{
+      if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();games.scrollLeft+=e.deltaY;}
+    },{passive:false});
+    let down=false,x=0,left=0;
+    games.addEventListener('pointerdown',e=>{if(e.target.closest('a'))return;down=true;x=e.clientX;left=games.scrollLeft;games.setPointerCapture?.(e.pointerId);});
+    games.addEventListener('pointermove',e=>{if(!down)return;games.scrollLeft=left-(e.clientX-x);});
+    const stop=()=>{down=false;};
+    games.addEventListener('pointerup',stop);games.addEventListener('pointercancel',stop);
+  }
+  wire();
+  setTimeout(wire,500);setTimeout(wire,1500);
+})();
+</script>
 </body>
 </html>

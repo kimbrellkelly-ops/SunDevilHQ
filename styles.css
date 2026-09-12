@@ -4350,3 +4350,11 @@ footer{background:var(--maroon);color:#fff;padding:30px max(25px,calc((100% - 15
 .v2-score-games:active{cursor:grabbing;}
 .v2-score-games .v2-score-card{flex:0 0 175px;}
 @media(max-width:800px){.v2-score-games .v2-score-card{flex-basis:155px;}}
+
+/* FINAL SCOREBOARD SCROLL REPAIR: keep filters/arrows fixed and make only the game track scroll. */
+.v2-scorebar{display:flex!important;align-items:stretch!important;overflow:hidden!important;min-width:0!important;}
+.v2-score-games{flex:1 1 0!important;width:0!important;min-width:0!important;display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important;-ms-overflow-style:none!important;scroll-behavior:smooth!important;overscroll-behavior-x:contain!important;touch-action:pan-x!important;}
+.v2-score-games::-webkit-scrollbar{display:none!important;width:0!important;height:0!important;}
+.v2-score-games .v2-score-card{flex:0 0 175px!important;min-width:175px!important;}
+.v2-score-prev,.v2-score-next{flex:0 0 42px!important;min-width:42px!important;position:relative!important;z-index:10!important;}
+@media(max-width:800px){.v2-score-games .v2-score-card{flex-basis:155px!important;min-width:155px!important}.v2-score-prev,.v2-score-next{flex-basis:36px!important;min-width:36px!important}}
