@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-12T20:55:13.591490+00:00",
+  "updated": "2026-09-12T21:02:31.405380+00:00",
   "source": "Automatically refreshed from official/public sources.",
   "team": {
     "record": "2-0",
@@ -366,7 +366,7 @@
         "second": "—"
       }
     ],
-    "checked_at": "2026-09-12T20:55:50.813824+00:00"
+    "checked_at": "2026-09-12T21:02:55.109469+00:00"
   },
   "resources": [
     {
@@ -7820,7 +7820,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "2:01 - 4th",
+        "detail": "0:26 - 4th",
         "broadcasts": [
           "ESPN+"
         ]
@@ -7836,7 +7836,7 @@
             "short": "Ball State",
             "abbrev": "BALL",
             "homeAway": "home",
-            "score": "27"
+            "score": "33"
           },
           {
             "id": "2619",
@@ -7844,12 +7844,12 @@
             "short": "Stony Brook",
             "abbrev": "STBK",
             "homeAway": "away",
-            "score": "3"
+            "score": "11"
           }
         ],
         "state": "in",
         "completed": false,
-        "detail": "5:19 - 4th",
+        "detail": "3:03 - 4th",
         "broadcasts": [
           "ESPN+"
         ]
@@ -7865,7 +7865,7 @@
             "short": "South Dakota",
             "abbrev": "SDAK",
             "homeAway": "home",
-            "score": "38"
+            "score": "41"
           },
           {
             "id": "331",
@@ -7878,7 +7878,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "5:16 - 4th",
+        "detail": "2:00 - 4th",
         "broadcasts": [
           "ESPN+",
           "Midco Sports Net"
@@ -7908,7 +7908,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "6:22 - 3rd",
+        "detail": "4:10 - 3rd",
         "broadcasts": [
           "ESPN+"
         ]
@@ -7937,7 +7937,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "2:00 - 4th",
+        "detail": "0:42 - 4th",
         "broadcasts": [
           "ESPN+"
         ]
@@ -7953,7 +7953,7 @@
             "short": "Northern Iowa",
             "abbrev": "UNI",
             "homeAway": "home",
-            "score": "49"
+            "score": "56"
           },
           {
             "id": "2181",
@@ -7966,7 +7966,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "7:30 - 4th",
+        "detail": "6:42 - 4th",
         "broadcasts": [
           "ESPN+"
         ]
@@ -7995,7 +7995,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "10:13 - 3rd",
+        "detail": "8:57 - 3rd",
         "broadcasts": [
           "Midco Sports Plus"
         ]
@@ -8019,12 +8019,12 @@
             "short": "Bowie St",
             "abbrev": "BSU",
             "homeAway": "away",
-            "score": "0"
+            "score": "6"
           }
         ],
         "state": "in",
         "completed": false,
-        "detail": "13:15 - 3rd",
+        "detail": "11:13 - 3rd",
         "broadcasts": []
       },
       {
@@ -8051,7 +8051,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "Halftime",
+        "detail": "12:31 - 3rd",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8080,7 +8080,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "3:39 - 2nd",
+        "detail": "2:28 - 2nd",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8104,12 +8104,12 @@
             "short": "Robert Morris",
             "abbrev": "RMU",
             "homeAway": "away",
-            "score": "7"
+            "score": "10"
           }
         ],
         "state": "in",
         "completed": false,
-        "detail": "0:51 - 2nd",
+        "detail": "End of 2nd",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8125,7 +8125,7 @@
             "short": "Toledo",
             "abbrev": "TOL",
             "homeAway": "home",
-            "score": "28"
+            "score": "35"
           },
           {
             "id": "2115",
@@ -8138,7 +8138,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "2:00 - 2nd",
+        "detail": "1:23 - 2nd",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8183,7 +8183,7 @@
             "short": "SMU",
             "abbrev": "SMU",
             "homeAway": "home",
-            "score": "21"
+            "score": "28"
           },
           {
             "id": "302",
@@ -8196,7 +8196,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "11:50 - 2nd",
+        "detail": "10:23 - 2nd",
         "broadcasts": [
           "ACCNX"
         ]
@@ -8212,7 +8212,7 @@
             "short": "Wyoming",
             "abbrev": "WYO",
             "homeAway": "home",
-            "score": "0"
+            "score": "7"
           },
           {
             "id": "2458",
@@ -8225,7 +8225,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "12:03 - 2nd",
+        "detail": "7:19 - 2nd",
         "broadcasts": [
           "MW+"
         ]
@@ -8254,7 +8254,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "14:08 - 2nd",
+        "detail": "13:33 - 2nd",
         "broadcasts": [
           "MW+"
         ]
@@ -8283,7 +8283,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "7:59 - 2nd",
+        "detail": "5:09 - 2nd",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8299,7 +8299,7 @@
             "short": "Troy",
             "abbrev": "TROY",
             "homeAway": "home",
-            "score": "14"
+            "score": "17"
           },
           {
             "id": "2011",
@@ -8312,7 +8312,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "12:01 - 2nd",
+        "detail": "11:32 - 2nd",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8328,7 +8328,7 @@
             "short": "Miss Valley St",
             "abbrev": "MVSU",
             "homeAway": "home",
-            "score": "7"
+            "score": "14"
           },
           {
             "id": "2339",
@@ -8341,7 +8341,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "7:10 - 2nd",
+        "detail": "3:13 - 2nd",
         "broadcasts": []
       },
       {
@@ -27507,5 +27507,5 @@
     "url": "https://skylinesportsmt.com/griz-press-conference-montanas-bobby-kennedy-s-kade-boyd-wr-landon-ransom-goelz-on-utah-tech/",
     "youtube_id": ""
   },
-  "fcs_scores_updated": "2026-09-12T20:55:54.434340+00:00"
+  "fcs_scores_updated": "2026-09-12T21:02:58.225452+00:00"
 }
