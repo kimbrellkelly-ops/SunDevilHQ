@@ -1,22 +1,21 @@
-# Griz HQ Officiating Intelligence — ingestion engine v0.1
+# Griz HQ Live Score Updater
 
-This is a standalone data-layer prototype. It does NOT modify Griz HQ production files.
+Upload the contents of this package into the root of the `GrizTestHQ` repository.
 
-## Purpose
-Parse text exported from a GoGriz football box score into:
-- seven-man officials
-- official penalty summary
-- individual penalty-event candidates
-- explicit replay events
-- validation flags
+## Files
 
-## Safety
-The engine intentionally does not auto-publish a game. It emits:
-- READY_FOR_EVENT_RECONCILIATION
-- REQUIRES_RECONCILIATION
-- FAIL
+- `.github/workflows/update-live-scores.yml` — runs every 10 minutes and can also be run manually.
+- `update_data.py` — refreshes Montana data.
+- `score_refresh.py` — refreshes the FCS/Big Sky scoreboard data in `data.json`.
+- Supporting updater scripts are included for compatibility with the existing project.
 
-A later publisher should only accept a record after its event-level penalties reconcile with the official summary or a documented exception is approved.
+## GitHub upload
 
-## Next milestone
-Run the parser against raw page text for Southern Utah 2026, Drake 2026, Idaho 2025, then a fourth game. Improve parsing only when a real source variation requires it.
+1. Upload the `.github` folder and the Python files to the repository root.
+2. Commit the changes.
+3. Open the repository's **Actions** tab.
+4. Select **Update Griz HQ live scores**.
+5. Click **Run workflow** once to test it.
+6. Confirm that `data.json` changes after the workflow completes.
+
+The website must already be coded to read the refreshed scoreboard data from `data.json`.
