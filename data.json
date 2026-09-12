@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-12T19:32:41.187728+00:00",
+  "updated": "2026-09-12T19:43:21.568766+00:00",
   "source": "Automatically refreshed from official/public sources.",
   "team": {
     "record": "2-0",
@@ -366,7 +366,7 @@
         "second": "—"
       }
     ],
-    "checked_at": "2026-09-12T19:33:19.913056+00:00"
+    "checked_at": "2026-09-12T19:43:43.508665+00:00"
   },
   "resources": [
     {
@@ -7826,35 +7826,6 @@
         ]
       },
       {
-        "id": "401866416",
-        "date": "2026-09-12T16:00Z",
-        "name": "Wofford Terriers at Kent State Golden Flashes",
-        "teams": [
-          {
-            "id": "2309",
-            "name": "Kent State Golden Flashes",
-            "short": "Kent State",
-            "abbrev": "KENT",
-            "homeAway": "home",
-            "score": "36"
-          },
-          {
-            "id": "2747",
-            "name": "Wofford Terriers",
-            "short": "Wofford",
-            "abbrev": "WOF",
-            "homeAway": "away",
-            "score": "15"
-          }
-        ],
-        "state": "post",
-        "completed": true,
-        "detail": "Final",
-        "broadcasts": [
-          "ESPN+"
-        ]
-      },
-      {
         "id": "401866633",
         "date": "2026-09-12T16:00Z",
         "name": "North Carolina A&T Aggies at North Carolina Central Eagles",
@@ -7894,7 +7865,7 @@
             "short": "James Madison",
             "abbrev": "JMU",
             "homeAway": "home",
-            "score": "80"
+            "score": "87"
           },
           {
             "id": "2681",
@@ -7905,9 +7876,9 @@
             "score": "3"
           }
         ],
-        "state": "in",
-        "completed": false,
-        "detail": "2:12 - 4th",
+        "state": "post",
+        "completed": true,
+        "detail": "Final",
         "broadcasts": [
           "ESPN+"
         ]
@@ -7932,35 +7903,6 @@
             "abbrev": "GWEB",
             "homeAway": "away",
             "score": "23"
-          }
-        ],
-        "state": "in",
-        "completed": false,
-        "detail": "0:42 - 4th",
-        "broadcasts": [
-          "ESPN+"
-        ]
-      },
-      {
-        "id": "401870822",
-        "date": "2026-09-12T16:00Z",
-        "name": "Dickinson (PA) Red Devils at Davidson Wildcats",
-        "teams": [
-          {
-            "id": "2166",
-            "name": "Davidson Wildcats",
-            "short": "Davidson",
-            "abbrev": "DAV",
-            "homeAway": "home",
-            "score": "28"
-          },
-          {
-            "id": "2175",
-            "name": "Dickinson (PA) Red Devils",
-            "short": "Dickinson",
-            "abbrev": "DCK",
-            "homeAway": "away",
-            "score": "14"
           }
         ],
         "state": "post",
@@ -7992,9 +7934,9 @@
             "score": "9"
           }
         ],
-        "state": "in",
-        "completed": false,
-        "detail": "2:11 - 4th",
+        "state": "post",
+        "completed": true,
+        "detail": "Final",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8023,7 +7965,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "End of 3rd",
+        "detail": "11:20 - 4th",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8039,7 +7981,7 @@
             "short": "C Michigan",
             "abbrev": "CMU",
             "homeAway": "home",
-            "score": "6"
+            "score": "13"
           },
           {
             "id": "2142",
@@ -8052,7 +7994,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "9:23 - 4th",
+        "detail": "5:17 - 4th",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8081,7 +8023,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "5:57 - 4th",
+        "detail": "2:09 - 4th",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8097,7 +8039,7 @@
             "short": "Chicago St",
             "abbrev": "CHST",
             "homeAway": "home",
-            "score": "56"
+            "score": "58"
           },
           {
             "id": "3077",
@@ -8110,37 +8052,8 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "15:00 - 4th",
+        "detail": "11:35 - 4th",
         "broadcasts": []
-      },
-      {
-        "id": "401867990",
-        "date": "2026-09-12T17:30Z",
-        "name": "Bucknell Bison at VMI Keydets",
-        "teams": [
-          {
-            "id": "2678",
-            "name": "VMI Keydets",
-            "short": "VMI",
-            "abbrev": "VMI",
-            "homeAway": "home",
-            "score": "3"
-          },
-          {
-            "id": "2083",
-            "name": "Bucknell Bison",
-            "short": "Bucknell",
-            "abbrev": "BUCK",
-            "homeAway": "away",
-            "score": "14"
-          }
-        ],
-        "state": "post",
-        "completed": true,
-        "detail": "Final",
-        "broadcasts": [
-          "ESPN+"
-        ]
       },
       {
         "id": "401866413",
@@ -8166,7 +8079,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "End of 2nd",
+        "detail": "Halftime",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8212,7 +8125,7 @@
             "short": "Youngstown St",
             "abbrev": "YSU",
             "homeAway": "home",
-            "score": "28"
+            "score": "35"
           },
           {
             "id": "2184",
@@ -8225,7 +8138,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "8:38 - 2nd",
+        "detail": "7:00 - 2nd",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8254,7 +8167,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "End of 2nd",
+        "detail": "2:15 - 2nd",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8283,7 +8196,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "0:41 - 2nd",
+        "detail": "15:00 - 3rd",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8299,7 +8212,7 @@
             "short": "St Thomas",
             "abbrev": "STMN",
             "homeAway": "home",
-            "score": "15"
+            "score": "22"
           },
           {
             "id": "128",
@@ -8312,9 +8225,65 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "8:31 - 2nd",
+        "detail": "6:01 - 2nd",
         "broadcasts": [
           "Midco Sports Plus"
+        ]
+      },
+      {
+        "id": "401867953",
+        "date": "2026-09-12T19:00Z",
+        "name": "Bowie State Bulldogs at Delaware State Hornets",
+        "teams": [
+          {
+            "id": "2169",
+            "name": "Delaware State Hornets",
+            "short": "Delaware St",
+            "abbrev": "DSU",
+            "homeAway": "home",
+            "score": "7"
+          },
+          {
+            "id": "2075",
+            "name": "Bowie State Bulldogs",
+            "short": "Bowie St",
+            "abbrev": "BSU",
+            "homeAway": "away",
+            "score": "0"
+          }
+        ],
+        "state": "in",
+        "completed": false,
+        "detail": "15:00 - 2nd",
+        "broadcasts": []
+      },
+      {
+        "id": "401868112",
+        "date": "2026-09-12T19:00Z",
+        "name": "Utah Tech Trailblazers at Montana Grizzlies",
+        "teams": [
+          {
+            "id": "149",
+            "name": "Montana Grizzlies",
+            "short": "Montana",
+            "abbrev": "MONT",
+            "homeAway": "home",
+            "score": "13"
+          },
+          {
+            "id": "3101",
+            "name": "Utah Tech Trailblazers",
+            "short": "Utah Tech",
+            "abbrev": "UTU",
+            "homeAway": "away",
+            "score": "0"
+          }
+        ],
+        "state": "in",
+        "completed": false,
+        "detail": "14:56 - 2nd",
+        "broadcasts": [
+          "ESPN+"
         ]
       },
       {
@@ -8344,6 +8313,35 @@
         "detail": "Final",
         "broadcasts": [
           "BTN"
+        ]
+      },
+      {
+        "id": "401866416",
+        "date": "2026-09-12T16:00Z",
+        "name": "Wofford Terriers at Kent State Golden Flashes",
+        "teams": [
+          {
+            "id": "2309",
+            "name": "Kent State Golden Flashes",
+            "short": "Kent State",
+            "abbrev": "KENT",
+            "homeAway": "home",
+            "score": "36"
+          },
+          {
+            "id": "2747",
+            "name": "Wofford Terriers",
+            "short": "Wofford",
+            "abbrev": "WOF",
+            "homeAway": "away",
+            "score": "15"
+          }
+        ],
+        "state": "post",
+        "completed": true,
+        "detail": "Final",
+        "broadcasts": [
+          "ESPN+"
         ]
       },
       {
@@ -8434,57 +8432,59 @@
         ]
       },
       {
-        "id": "401867953",
-        "date": "2026-09-12T19:00Z",
-        "name": "Bowie State Bulldogs at Delaware State Hornets",
+        "id": "401870822",
+        "date": "2026-09-12T16:00Z",
+        "name": "Dickinson (PA) Red Devils at Davidson Wildcats",
         "teams": [
           {
-            "id": "2169",
-            "name": "Delaware State Hornets",
-            "short": "Delaware St",
-            "abbrev": "DSU",
+            "id": "2166",
+            "name": "Davidson Wildcats",
+            "short": "Davidson",
+            "abbrev": "DAV",
             "homeAway": "home",
-            "score": "7"
+            "score": "28"
           },
           {
-            "id": "2075",
-            "name": "Bowie State Bulldogs",
-            "short": "Bowie St",
-            "abbrev": "BSU",
+            "id": "2175",
+            "name": "Dickinson (PA) Red Devils",
+            "short": "Dickinson",
+            "abbrev": "DCK",
             "homeAway": "away",
-            "score": "0"
+            "score": "14"
           }
         ],
-        "state": "in",
-        "completed": false,
-        "detail": "9:58 - 1st",
-        "broadcasts": []
+        "state": "post",
+        "completed": true,
+        "detail": "Final",
+        "broadcasts": [
+          "ESPN+"
+        ]
       },
       {
-        "id": "401868112",
-        "date": "2026-09-12T19:00Z",
-        "name": "Utah Tech Trailblazers at Montana Grizzlies",
+        "id": "401867990",
+        "date": "2026-09-12T17:30Z",
+        "name": "Bucknell Bison at VMI Keydets",
         "teams": [
           {
-            "id": "149",
-            "name": "Montana Grizzlies",
-            "short": "Montana",
-            "abbrev": "MONT",
+            "id": "2678",
+            "name": "VMI Keydets",
+            "short": "VMI",
+            "abbrev": "VMI",
             "homeAway": "home",
-            "score": "7"
+            "score": "3"
           },
           {
-            "id": "3101",
-            "name": "Utah Tech Trailblazers",
-            "short": "Utah Tech",
-            "abbrev": "UTU",
+            "id": "2083",
+            "name": "Bucknell Bison",
+            "short": "Bucknell",
+            "abbrev": "BUCK",
             "homeAway": "away",
-            "score": "0"
+            "score": "14"
           }
         ],
-        "state": "in",
-        "completed": false,
-        "detail": "4:24 - 1st",
+        "state": "post",
+        "completed": true,
+        "detail": "Final",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8500,7 +8500,7 @@
             "short": "Colorado",
             "abbrev": "COLO",
             "homeAway": "home",
-            "score": "0"
+            "score": "7"
           },
           {
             "id": "2692",
@@ -8513,7 +8513,7 @@
         ],
         "state": "in",
         "completed": false,
-        "detail": "14:55 - 1st",
+        "detail": "13:44 - 1st",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8540,9 +8540,9 @@
             "score": "0"
           }
         ],
-        "state": "pre",
+        "state": "in",
         "completed": false,
-        "detail": "9/12 - 3:30 PM EDT",
+        "detail": "11:12 - 1st",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8566,12 +8566,12 @@
             "short": "C Connecticut",
             "abbrev": "CCSU",
             "homeAway": "away",
-            "score": "0"
+            "score": "3"
           }
         ],
-        "state": "pre",
+        "state": "in",
         "completed": false,
-        "detail": "9/12 - 3:30 PM EDT",
+        "detail": "11:29 - 1st",
         "broadcasts": [
           "ESPN+"
         ]
@@ -8587,7 +8587,7 @@
             "short": "UMass",
             "abbrev": "MASS",
             "homeAway": "home",
-            "score": "0"
+            "score": "14"
           },
           {
             "id": "2529",
@@ -8598,9 +8598,9 @@
             "score": "0"
           }
         ],
-        "state": "pre",
+        "state": "in",
         "completed": false,
-        "detail": "9/12 - 3:30 PM EDT",
+        "detail": "11:44 - 1st",
         "broadcasts": [
           "ESPN+"
         ]
@@ -27507,5 +27507,5 @@
     "url": "https://skylinesportsmt.com/griz-press-conference-montanas-bobby-kennedy-s-kade-boyd-wr-landon-ransom-goelz-on-utah-tech/",
     "youtube_id": ""
   },
-  "fcs_scores_updated": "2026-09-12T19:33:23.475260+00:00"
+  "fcs_scores_updated": "2026-09-12T19:43:46.646946+00:00"
 }
