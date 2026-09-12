@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Griz HQ | Montana Football</title>
 <meta content="Griz HQ — a fan-built Montana Grizzlies football information hub." name="description"/>
-<link href="styles.css?v=20260911-espn-clean1" rel="stylesheet"/>
+<link href="styles.css?v=20260906-news3" rel="stylesheet"/>
 <script defer="" src="app.js?v=20260909-fcs-missing-logos1"></script>
 <script defer="" src="rankings-team-logos.js"></script>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -32,101 +32,73 @@
 </style>
 </head>
 <body>
-<header class="site-header">
-<div class="brand-row">
-<div class="header-brand-block">
-<a aria-label="Griz HQ home" class="brand" href="#home">
-<img alt="Griz HQ" class="griz-hq-logo" src="griz-hq-logo.png"/>
-</a>
-</div>
-<div aria-label="Montana football next game" class="header-matchup">
-<div class="header-matchup-kicker"><span></span>NEXT GAME<span></span></div>
-<div class="header-matchup-teams">
-<div class="header-team header-team-home">
-<img alt="Montana Grizzlies" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Montana_Griz_logo.svg"/>
-<strong>MONTANA</strong>
-</div>
-<div class="header-vs">VS</div>
-<div class="header-team header-team-away">
-<img alt="Utah Tech Trailblazers" id="header-gamebar-opponent-logo" src="https://a.espncdn.com/i/teamlogos/ncaa/500/3101.png"/>
-<strong id="header-gamebar-opponent">UTAH TECH</strong>
-</div>
-</div>
-<div class="header-gamebar-date" id="header-gamebar-date">SEP 5 • 1 PM MT</div>
-<div class="header-gamebar-venue" id="header-gamebar-venue">WASHINGTON-GRIZZLY STADIUM</div>
-</div>
-<div class="header-go-block">
-<a aria-label="Go Griz" class="header-go-griz" href="https://gogriz.com/" rel="noopener" target="_blank"><img alt="Go Griz" src="go-griz-graphic.png"/></a>
-</div>
-</div>
-<nav aria-label="Griz HQ sections" class="nav">
-<a aria-current="page" class="active" data-tab-link="home" href="#home">HOME</a>
-<a data-tab-link="game" href="#next-up">NEXT UP</a>
-<a data-tab-link="scores" href="#fcs-scores">SCORES</a>
-<a data-tab-link="media" href="#media">MEDIA</a>
-<a data-tab-link="news" href="#news">NEWS</a>
-<a data-tab-link="rankings" href="#rankings">RANKINGS</a>
-<a data-tab-link="schedule" href="#schedule">SCHEDULE</a>
-<a data-tab-link="roster" href="#roster">ROSTER</a>
-<a data-tab-link="stats" href="#stats">STATS</a>
-<a data-tab-link="history" href="#history">HISTORY</a>
-<a data-tab-link="officiating" href="#officiating">OFFICIATING</a>
-</nav>
+<header class="v2-header">
+  <div class="v2-topbar">
+    <a class="v2-brand" href="#home" aria-label="Griz HQ home"><img src="griz-hq-logo.png" alt="Griz HQ Montana Football"></a>
+    <nav class="v2-nav" aria-label="Primary navigation">
+      <a class="active" data-tab-link="home" href="#home">Home</a>
+      <a data-tab-link="game" href="#next-up">Next Up</a>
+      <a data-tab-link="scores" href="#fcs-scores">Scores</a>
+      <a data-tab-link="news" href="#news">News</a>
+      <a data-tab-link="rankings" href="#rankings">Rankings</a>
+      <a data-tab-link="schedule" href="#schedule">Schedule</a>
+      <a data-tab-link="roster" href="#roster">Roster</a>
+      <a data-tab-link="stats" href="#stats">Stats</a>
+      <a data-tab-link="schedule" href="#big-sky">Big Sky</a>
+      <a data-tab-link="media" href="#media">Media</a>
+      <a data-tab-link="history" href="#history">More⌄</a>
+    </nav>
+    <a class="v2-go-griz" href="https://gogriz.com/" target="_blank" rel="noopener">🐾 Go Griz</a>
+  </div>
+  <div class="v2-scorebar" aria-label="Football scores and upcoming games">
+    <div class="v2-score-filter"><b>FCS</b><span>⌄</span></div>
+    <div class="v2-score-filter"><b>Week 2</b><span>⌄</span></div>
+    <a class="v2-score-card" href="#fcs-scores"><small>Sat · 9:00 AM MT <b>ESPN+</b></small><strong>MSU <span>0–0</span></strong><strong>SAC <span>0–0</span></strong></a>
+    <a class="v2-score-card" href="#fcs-scores"><small>Sat · 11:00 AM MT <b>ESPN+</b></small><strong>EWU <span>0–0</span></strong><strong>IDAHO <span>0–0</span></strong></a>
+    <a class="v2-score-card featured" href="#next-up"><small>Sat · 12:00 PM MT <b>ESPN+</b></small><strong>🐻 MONTANA <span>2–0</span></strong><strong>UTAH TECH <span>0–2</span></strong></a>
+    <a class="v2-score-card" href="#fcs-scores"><small>Sat · 12:30 PM MT <b>ESPN+</b></small><strong>WEBER ST <span>1–1</span></strong><strong>COLORADO ST <span>1–1</span></strong></a>
+    <a class="v2-score-card" href="#fcs-scores"><small>Sat · 1:00 PM MT <b>ACCNX</b></small><strong>UC DAVIS <span>2–0</span></strong><strong>SMU <span>1–0</span></strong></a>
+    <a class="v2-score-card" href="#fcs-scores"><small>Sat · 2:00 PM MT <b>ESPN+</b></small><strong>UNC <span>0–2</span></strong><strong>WYO <span>0–1</span></strong></a>
+    <button class="v2-score-next" type="button" aria-label="More scores">›</button>
+  </div>
 </header>
 <main id="home">
-<section class="espn-home tab-panel is-active" data-tab="home" id="espn-home" aria-label="Griz HQ home newsroom">
-  <div class="espn-home-grid">
-    <aside class="espn-rail espn-quick-links">
-      <div class="espn-rail-head"><span>GRIZ HQ</span><h2>Quick Links</h2></div>
-      <a href="#next-up"><b>Next Up</b><span>Opponent dossier</span><em>↗</em></a>
-      <a href="#fcs-scores"><b>Scores</b><span>FCS and Big Sky</span><em>↗</em></a>
-      <a href="#schedule"><b>Schedule</b><span>2026 season</span><em>↗</em></a>
-      <a href="#roster"><b>Roster</b><span>Players and positions</span><em>↗</em></a>
-      <a href="#stats"><b>Team Stats</b><span>Numbers and leaders</span><em>↗</em></a>
-      <a href="#rankings"><b>Rankings</b><span>FCS Top 25</span><em>↗</em></a>
-      <a href="#officiating"><b>Officiating Lab</b><span>Flags and crews</span><em>↗</em></a>
-      <a href="#history"><b>Griz History</b><span>Records and tradition</span><em>↗</em></a>
+<section class="v2-home tab-panel is-active" data-tab="home" id="v2-home" aria-label="Griz HQ home dashboard">
+  <div class="v2-dashboard">
+    <aside class="v2-rail v2-card">
+      <div class="v2-card-heading"><span>↗</span><h2>Quick Links</h2></div>
+      <a href="#next-up">Next Game <b>›</b></a>
+      <a href="#schedule">Schedule <b>›</b></a>
+      <a href="#roster">Roster <b>›</b></a>
+      <a href="#roster">Depth Chart <b>›</b></a>
+      <a href="#roster">Recruiting <b>›</b></a>
+      <a href="#roster">Transfer Portal <b>›</b></a>
+      <a href="#big-sky">Big Sky <b>›</b></a>
+      <a href="#rankings">Rankings <b>›</b></a>
+      <a href="#stats">Stats <b>›</b></a>
+      <a href="#news">News <b>›</b></a>
+      <a href="#media">Media <b>›</b></a>
+      <a href="#history">The Vault <b>›</b></a>
+      <a class="v2-rail-cta" href="https://gogriz.com/" target="_blank" rel="noopener">🐾 Go Griz</a>
     </aside>
-    <section class="espn-main-news">
-      <div class="espn-section-head"><div><span class="eyebrow">THE GRIZ NEWSROOM</span><h1>Latest Montana Football News</h1><p>Game coverage, roster movement, recruiting, analysis and everything Griz.</p></div><a href="#news">VIEW ALL NEWS ↗</a></div>
-      <div class="espn-feature-grid">
-        <a class="espn-feature-card" href="#news"><img src="hero.jpg" alt="Montana Grizzlies football"/><div><span class="espn-kicker">FEATURED</span><h2>Montana Football: The Latest From Griz Nation</h2><p>News, updates and coverage from around the program.</p><b>READ MORE ↗</b></div></a>
-        <div class="espn-news-list" id="home-news-side">
-          <a class="espn-news-row" href="#news"><div><span>GRIZ HQ</span><h3>Loading latest story…</h3><p>Latest Montana football coverage.</p></div><em>↗</em></a>
-          <a class="espn-news-row" href="#news"><div><span>GRIZ HQ</span><h3>Loading latest story…</h3><p>Latest Montana football coverage.</p></div><em>↗</em></a>
-          <a class="espn-news-row" href="#news"><div><span>GRIZ HQ</span><h3>Loading latest story…</h3><p>Latest Montana football coverage.</p></div><em>↗</em></a>
-          <a class="espn-news-row" href="#news"><div><span>GRIZ HQ</span><h3>Loading latest story…</h3><p>Latest Montana football coverage.</p></div><em>↗</em></a>
-        </div>
+    <section class="v2-center">
+      <div class="v2-feature v2-card">
+        <div class="v2-feature-image"><img src="hero.jpg" alt="Montana Grizzlies football"></div>
+        <div class="v2-feature-overlay"><span class="v2-tag">GAME PREVIEW</span><h1>Griz open 2026 season at home vs. Utah Tech</h1><p>Montana looks to start strong behind a veteran core and a reloaded offense in Saturday’s season opener at Washington-Grizzly Stadium.</p><a href="#next-up" class="v2-button">Full Preview →</a></div>
+      </div>
+      <div class="v2-story-grid" id="home-news-side">
+        <a class="v2-story v2-card" href="#news"><img src="hero.jpg" alt="Montana football news"><div><h3>5 storylines to watch in Montana’s 2026 season opener</h3><small>News · 1d ago</small></div></a>
+        <a class="v2-story v2-card" href="#news"><img src="hero.jpg" alt="Montana football analysis"><div><h3>Position battle spotlight: Who wins the QB2 job?</h3><small>Analysis · 2d ago</small></div></a>
+        <a class="v2-story v2-card" href="#news"><img src="mountain-bg.jpg" alt="Washington-Grizzly Stadium"><div><h3>What to know: Montana vs. Utah Tech</h3><small>Game Notes · 2d ago</small></div></a>
       </div>
     </section>
-    <aside class="espn-rail espn-headlines">
-      <div class="espn-rail-head"><span>AROUND THE PROGRAM</span><h2>Top Headlines</h2></div>
-      <a href="#news"><b>Latest Griz news</b><span>Updates and reports</span><em>↗</em></a>
-      <a href="#next-up"><b>Next game</b><span>Matchup and preview</span><em>↗</em></a>
-      <a href="#roster"><b>Roster movement</b><span>Players and depth</span><em>↗</em></a>
-      <a href="#rankings"><b>FCS Top 25</b><span>Rankings and movement</span><em>↗</em></a>
-      <a href="#fcs-scores"><b>Big Sky scores</b><span>Results around the league</span><em>↗</em></a>
-      <a href="#officiating"><b>Officiating intelligence</b><span>The data behind the flags</span><em>↗</em></a>
-      <a href="#media"><b>Media center</b><span>Podcasts, videos and interviews</span><em>↗</em></a>
+    <aside class="v2-right">
+      <section class="v2-card v2-headlines"><div class="v2-card-heading"><span>▤</span><h2>Top Headlines</h2><a href="#news">View All →</a></div><a href="#news">Montana prepares for another ranked matchup <small>2h ago</small></a><a href="#news">Five things to watch before kickoff <small>3h ago</small></a><a href="#news">Big Sky teams enter a pivotal weekend <small>3h ago</small></a><a href="#news">Griz offense looks to build on early-season momentum <small>4h ago</small></a><a href="#news">Opponent report: Utah Tech scouting notes <small>5h ago</small></a><a href="#news">Around Griz Nation: latest media and updates <small>5h ago</small></a></section>
+      <section class="v2-card v2-snapshot"><div class="v2-card-heading"><span>▥</span><h2>Montana Snapshot</h2><a href="#stats">Full Stats →</a></div><div class="v2-snapshot-grid"><div><b>2–0</b><small>Record</small></div><div><b>#2</b><small>FCS Rank</small></div><div><b>1–0</b><small>Big Sky</small></div></div></section>
+      <section class="v2-next-card"><div class="v2-next-top"><b>Next Game</b><a href="#next-up">Game Center →</a></div><div class="v2-next-match"><div><strong>GRIZ</strong><small>MONTANA<br>2–0</small></div><div><b>Sat, Sep 12<br>12:00 PM MT</b><small>ESPN+</small></div><div><strong>UT</strong><small>UTAH TECH<br>0–2</small></div></div><small>Washington-Grizzly Stadium · Missoula, MT</small></section>
     </aside>
   </div>
-</section>
-<!-- HOMEPAGE SOCIAL RAIL: driven by social.json -->
-<section class="ghq-social-section tab-panel" data-tab="home" id="home-social">
-<div class="ghq-social-shell">
-<div class="ghq-social-head">
-<div>
-<div class="eyebrow light">GRIZ SOCIAL</div>
-<h2>WHAT GRIZ NATION IS WATCHING</h2>
-<p>Actual Griz social posts and videos from verified accounts — refreshed automatically.</p>
-</div>
-<div class="ghq-social-links">
-<a href="https://x.com/MontanaGrizFB" rel="noopener" target="_blank">X ↗</a>
-<a href="https://www.instagram.com/montanagrizfootball/" rel="noopener" target="_blank">INSTAGRAM ↗</a>
-</div>
-</div>
-<div class="ghq-social-grid" id="ghq-social-grid"><div class="ghq-social-empty">Loading Griz social…</div></div>
-</div>
+  <section class="v2-lower-news v2-card"><div class="v2-card-heading"><h2>Latest Griz News</h2><a href="#news">Open Newsroom →</a></div><div class="v2-lower-news-grid"><a href="#news">Game week: everything you need to know</a><a href="#news">Depth chart and roster updates</a><a href="#news">Big Sky and FCS news roundup</a><a href="#news">Podcasts, videos and interviews</a></div></section>
 </section>
 <section class="section tab-panel" data-tab="schedule" id="big-sky"><div class="section-head"><div class="eyebrow">AROUND THE LEAGUE</div><h2>2026 Big Sky Football</h2><span>All Big Sky teams • conference &amp; non-conference</span></div><div class="bigsky-tools"><label>TEAM<select id="bigsky-team-filter"><option value="ALL">ALL TEAMS</option></select></label><label>WEEK<select id="bigsky-date-filter"><option value="ALL">CURRENT WEEK</option></select></label></div><div class="bigsky-table" id="bigsky-table">Loading Big Sky schedule…</div><div class="schedule-source">Source: <a href="https://bigskyconf.com/news/2026/7/6/big-sky-announces-kickoff-times-for-2026-conference-football-season.aspx" rel="noopener" target="_blank">Big Sky Conference ↗</a></div></section>
 <section class="section tab-panel ghq-next-up" data-tab="game" id="next-up">
