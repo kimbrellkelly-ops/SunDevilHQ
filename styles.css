@@ -4309,3 +4309,10 @@ footer{background:var(--maroon);color:#fff;padding:30px max(25px,calc((100% - 15
 .v2-more-dropdown a{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 14px!important;border-radius:9px;color:#24242a!important;background:transparent!important}
 .v2-more-dropdown a:hover{background:#f6eaf0!important;color:#760039!important}
 @media(max-width:800px){.v2-more-trigger{font-size:12px;padding:9px 7px}.v2-more-dropdown{right:auto;left:0}}
+
+/* Phase 2B: scoreboard links */
+.v2-score-card{position:relative;text-decoration:none;cursor:pointer}
+.v2-score-card em{display:block;margin-top:8px;font-size:10px;font-style:normal;font-weight:800;letter-spacing:.04em;color:#7a003c;opacity:0;transform:translateY(3px);transition:opacity .18s ease,transform .18s ease}
+.v2-score-card:hover em,.v2-score-card:focus-visible em{opacity:1;transform:translateY(0)}
+.v2-score-card.featured em{color:#fff}
+@media (max-width:700px){.v2-score-card em{opacity:1;transform:none}}
