@@ -1230,47 +1230,69 @@ document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click
 })();
 </script>
 <script id="scoreboard-filter-script">
-(function(){
-  const bar=document.querySelector('.v2-scorebar');
+(async function(){
   const games=document.getElementById('score-games');
   const group=document.getElementById('score-group-select');
   const week=document.getElementById('score-week-select');
-  if(!bar||!games||!group||!week)return;
+  const bar=document.querySelector('.v2-scorebar');
+  if(!games||!group||!week)return;
+  const weeks=[
+    ['2026-08-27','2026-08-30'],['2026-09-03','2026-09-06'],['2026-09-10','2026-09-13'],['2026-09-17','2026-09-20'],['2026-09-24','2026-09-27'],['2026-10-01','2026-10-04'],['2026-10-08','2026-10-11'],['2026-10-15','2026-10-18'],['2026-10-22','2026-10-25'],['2026-10-29','2026-11-01'],['2026-11-05','2026-11-08'],['2026-11-12','2026-11-15'],['2026-11-19','2026-11-22']
+  ];
   const espnWeek=(w,g)=>g==='bigsky'
     ? `https://www.espn.com/college-football/scoreboard/_/week/${w}/year/2026/seasontype/2/group/20`
     : `https://www.espn.com/college-football/scoreboard/_/week/${w}/year/2026/seasontype/2`;
-  const data={
-    fcs:{2:[
-      ['Sat · 9:00 AM MT','ESPN+','MSU','0–0','SAC','0–0'],
-      ['Sat · 11:00 AM MT','ESPN+','EWU','0–0','IDAHO','0–0'],
-      ['Sat · 12:00 PM MT','ESPN+','🐻 MONTANA','2–0','UTAH TECH','0–2','https://www.espn.com/college-football/game/_/gameId/401868112/utah-tech-montana'],
-      ['Sat · 12:30 PM MT','ESPN+','WEBER ST','1–1','COLORADO ST','1–1'],
-      ['Sat · 1:00 PM MT','ACCNX','UC DAVIS','2–0','SMU','1–0'],
-      ['Sat · 2:00 PM MT','ESPN+','UNC','0–2','WYO','0–1']
-    ]},
-    bigsky:{2:[
-      ['Sat · 12:00 PM MT','ESPN+','🐻 MONTANA','2–0','UTAH TECH','0–2','https://www.espn.com/college-football/game/_/gameId/401868112/utah-tech-montana'],
-      ['Sat · 1:00 PM MT','ESPN+','WEBER ST','1–1','COLORADO ST','1–1'],
-      ['Sat · 2:00 PM MT','ESPN+','IDAHO','1–1','EWU','0–2'],
-      ['Sat · 6:00 PM MT','ESPN+','PORTLAND ST','1–1','CAL POLY','1–1']
-    ]}
-  };
+  const clean=s=>String(s||'').replace(/\s*\([^)]*\)\s*$/,'').replace(/\s+/g,' ').trim();
+  const norm=s=>clean(s).toLowerCase().replace(/[^a-z0-9]/g,'');
+  const aliases={montana:['montana','montanagrizzlies'],montanastate:['montanastate','montanastatebobcats'],idaho:['idaho','idahovandals'],weberstate:['weberstate','weberstatewildcats'],easternwashington:['easternwashington','easternwashingtoneagles'],northernarizona:['northernarizona','northernarizonalumberjacks'],northerncolorado:['northerncolorado','northerncoloradobears'],idahostate:['idahostate','idahostatebengals'],calpoly:['calpoly','calpolytechnic','calpolymustangs'],southernutah:['southernutah','southernutahthunderbirds'],utahtech:['utahtech','utahtechtrailblazers'],ucdavis:['ucdavis','ucdavisaggies'],portlandstate:['portlandstate','portlandstatevikings']};
+  const bigSkyKeys=new Set(Object.keys(aliases));
+  const canonical=s=>{const n=norm(s);return Object.keys(aliases).find(k=>aliases[k].includes(n))||null;};
+  const teamName=t=>t?.short||t?.shortDisplayName||t?.name||t?.displayName||t?.abbrev||'Team';
+  const dateOnly=s=>String(s||'').slice(0,10);
+  const inWeek=(date,w)=>date>=weeks[w-1][0]&&date<=weeks[w-1][1];
+  let data={};
+  try{data=await (await fetch('data.json?scoreboard='+Date.now(),{cache:'no-store'})).json();}catch(e){games.innerHTML='<a class="v2-score-card v2-score-empty" href="'+espnWeek(Number(week.value),group.value)+'" target="_blank" rel="noopener"><strong>Open ESPN scoreboard</strong><small>Local score data unavailable ↗</small></a>';return;}
+  const ranked=new Set((data.fcs_top25||data.fcs_top20||[]).map(x=>norm(x.team)));
+  const allScores=Object.values(data.fcs_scores||{}).flat();
+  const schedule=data.big_sky_full_schedules||[];
+  const scoreFor=(away,home,date)=>allScores.find(ev=>dateOnly(ev.date)===date&&(ev.teams||[]).some(t=>norm(teamName(t))===norm(away))&&(ev.teams||[]).some(t=>norm(teamName(t))===norm(home)));
+  const formatDate=s=>{const d=new Date(s+'T12:00:00');return d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});};
+  function card(g,w){
+    const a=clean(g.away),h=clean(g.home),ev=g.event;
+    const awayScore=ev?.teams?.find(t=>t.homeAway==='away')?.score??'';
+    const homeScore=ev?.teams?.find(t=>t.homeAway==='home')?.score??'';
+    const final=!!ev?.completed;
+    const href=ev?.id?`https://www.espn.com/college-football/game/_/gameId/${ev.id}`:espnWeek(w,group.value);
+    const el=document.createElement('a');el.className='v2-score-card'+(norm(a)==='montana'||norm(h)==='montana'?' featured':'');el.href=href;el.target='_blank';el.rel='noopener';
+    el.innerHTML=`<small>${g.dateLabel||formatDate(g.date)} <b>${ev?.broadcasts?.[0]||g.network||'ESPN'}</b></small><strong>${a} <span>${awayScore||g.awayRecord||'—'}</span></strong><strong>${h} <span>${homeScore||g.homeRecord||'—'}</span></strong><em>${ev?.id?'ESPN Gamecast ↗':'ESPN scoreboard ↗'}</em>`;
+    return el;
+  }
   function render(){
-    const g=group.value,w=Number(week.value),items=(data[g]&&data[g][w])||[];
-    games.innerHTML='';
-    if(!items.length){
-      const a=document.createElement('a');a.className='v2-score-card v2-score-empty';a.href=espnWeek(w,g);a.target='_blank';a.rel='noopener';
-      a.innerHTML='<strong>'+ (g==='bigsky'?'Big Sky':'Top 25 FCS') +' · Week '+w+'</strong><small>Open ESPN scoreboard ↗</small>';
-      games.appendChild(a);
-    } else items.forEach((x)=>{
-      const a=document.createElement('a');a.className='v2-score-card'+(x[2].includes('MONTANA')?' featured':'');a.href=x[6]||espnWeek(w,g);a.target='_blank';a.rel='noopener';
-      a.innerHTML='<small>'+x[0]+' <b>'+x[1]+'</b></small><strong>'+x[2]+' <span>'+x[3]+'</span></strong><strong>'+x[4]+' <span>'+x[5]+'</span></strong><em>'+(x[6]?'ESPN Gamecast ↗':'ESPN scoreboard ↗')+'</em>';
-      games.appendChild(a);
-    });
-    bar.scrollLeft=0;
-    const prev=bar.querySelector('.v2-score-prev'),next=bar.querySelector('.v2-score-next');
-    if(prev)prev.disabled=true;
-    if(next)next.disabled=bar.scrollWidth<=bar.clientWidth;
+    const w=Number(week.value),g=group.value,items=[];
+    if(g==='fcs'){
+      allScores.forEach(ev=>{
+        const date=dateOnly(ev.date);if(!inWeek(date,w))return;
+        const ts=ev.teams||[];if(ts.length<2)return;
+        const names=ts.map(teamName);if(!names.some(n=>ranked.has(norm(n))))return;
+        const away=ts.find(t=>t.homeAway==='away')||ts[0],home=ts.find(t=>t.homeAway==='home')||ts[1];
+        items.push({date,dateLabel:formatDate(date),away:teamName(away),home:teamName(home),event:ev});
+      });
+    }else{
+      const seen=new Set();
+      schedule.forEach(x=>{
+        const d=x.date;const m=d.match(/^(Aug|Sep|Oct|Nov)\s+(\d{1,2})/);if(!m)return;
+        const month={Aug:'08',Sep:'09',Oct:'10',Nov:'11'}[m[1]],date=`2026-${month}-${String(m[2]).padStart(2,'0')}`;
+        if(!inWeek(date,w))return;
+        const key=[canonical(x.team),canonical(x.opponent)].sort().join('|')+'|'+date;if(seen.has(key))return;seen.add(key);
+        if(!canonical(x.team)&&!canonical(x.opponent))return;
+        const away=x.location==='Away'?x.opponent:x.team,home=x.location==='Away'?x.team:x.opponent;
+        items.push({date,dateLabel:formatDate(date),away,home,network:x.network,event:scoreFor(away,home,date)});
+      });
+    }
+    items.sort((a,b)=>a.date.localeCompare(b.date));games.innerHTML='';
+    if(!items.length){const a=document.createElement('a');a.className='v2-score-card v2-score-empty';a.href=espnWeek(w,g);a.target='_blank';a.rel='noopener';a.innerHTML=`<strong>${g==='bigsky'?'Big Sky':'Top 25 FCS'} · Week ${w}</strong><small>Open ESPN scoreboard ↗</small>`;games.appendChild(a);}
+    else items.forEach(x=>games.appendChild(card(x,w)));
+    games.scrollLeft=0;if(bar)bar.scrollLeft=0;
   }
   group.addEventListener('change',render);week.addEventListener('change',render);render();
 })();
