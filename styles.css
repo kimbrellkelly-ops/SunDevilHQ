@@ -4324,3 +4324,12 @@ footer{background:var(--maroon);color:#fff;padding:30px max(25px,calc((100% - 15
 .v2-scorebar:active{cursor:grabbing;}
 .v2-score-card,.v2-score-filter,.v2-score-next{flex:0 0 auto;}
 .v2-score-next{position:sticky;right:0;z-index:2;cursor:pointer;}
+
+
+/* Phase 2E: safe reverse scoreboard control */
+.v2-scorebar{position:relative;scroll-behavior:smooth;}
+.v2-score-prev,.v2-score-next{flex:0 0 auto;position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:center;width:42px;min-width:42px;cursor:pointer;background:#fff;color:#171717;border:1px solid #dfe2e8;border-radius:13px;font-size:30px;line-height:1;}
+.v2-score-prev{left:0;}
+.v2-score-next{right:0;}
+.v2-score-prev:disabled,.v2-score-next:disabled{opacity:.28;cursor:default;}
+@media(max-width:800px){.v2-score-prev,.v2-score-next{width:36px;min-width:36px;font-size:26px;}}

@@ -57,6 +57,7 @@
     <a class="v2-go-griz" href="https://gogriz.com/" target="_blank" rel="noopener">🐾 Go Griz</a>
   </div>
   <div class="v2-scorebar" aria-label="Football scores and upcoming games">
+    <button class="v2-score-prev" type="button" aria-label="Previous scores">‹</button>
     <div class="v2-score-filter"><b>FCS</b><span>⌄</span></div>
     <div class="v2-score-filter"><b>Week 2</b><span>⌄</span></div>
     <a class="v2-score-card" href="https://www.espn.com/college-football/scoreboard/_/week/2/year/2026/seasontype/2/group/20" target="_blank" rel="noopener"><small>Sat · 9:00 AM MT <b>ESPN+</b></small><strong>MSU <span>0–0</span></strong><strong>SAC <span>0–0</span></strong><em>ESPN scoreboard ↗</em></a>
@@ -1220,8 +1221,17 @@ document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click
   bar.addEventListener('pointerup',stop);
   bar.addEventListener('pointercancel',stop);
   bar.addEventListener('mouseleave',function(){if(dragging) dragging=false;});
+  const prev=bar.querySelector('.v2-score-prev');
   const next=bar.querySelector('.v2-score-next');
+  if(prev) prev.addEventListener('click',function(){bar.scrollBy({left:-430,behavior:'smooth'});});
   if(next) next.addEventListener('click',function(){bar.scrollBy({left:430,behavior:'smooth'});});
+  function updateArrows(){
+    if(prev) prev.disabled=bar.scrollLeft<=2;
+    if(next) next.disabled=bar.scrollLeft+bar.clientWidth>=bar.scrollWidth-2;
+  }
+  bar.addEventListener('scroll',updateArrows,{passive:true});
+  window.addEventListener('resize',updateArrows);
+  updateArrows();
 })();
 </script>
 </body>
