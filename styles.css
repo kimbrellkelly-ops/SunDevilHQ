@@ -4333,3 +4333,12 @@ footer{background:var(--maroon);color:#fff;padding:30px max(25px,calc((100% - 15
 .v2-score-next{right:0;}
 .v2-score-prev:disabled,.v2-score-next:disabled{opacity:.28;cursor:default;}
 @media(max-width:800px){.v2-score-prev,.v2-score-next{width:36px;min-width:36px;font-size:26px;}}
+
+/* Phase 2F scoreboard filters */
+.v2-score-games{display:flex;gap:8px;align-items:stretch;min-width:0;flex:0 0 auto;}
+.v2-score-select{padding:0 12px!important;min-width:150px;}
+.v2-score-select select{border:0;background:transparent;font:inherit;font-weight:800;color:#19191d;outline:none;cursor:pointer;max-width:145px;}
+.v2-score-empty{display:flex;flex-direction:column;justify-content:center;gap:7px;min-width:245px;}
+.v2-score-empty small{color:#760039;font-weight:800;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+@media(max-width:800px){.v2-score-select{min-width:130px!important;padding:0 10px!important}.v2-score-select select{max-width:120px;font-size:12px}.v2-score-games{gap:8px;}}
