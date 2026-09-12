@@ -1192,39 +1192,40 @@ document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click
 <script>
 (function(){
   const bar=document.querySelector('.v2-scorebar');
-  if(!bar || bar.dataset.scrollReady==='1') return;
-  bar.dataset.scrollReady='1';
-  bar.addEventListener('wheel',function(e){
+  const scroller=document.getElementById('score-games');
+  if(!bar || !scroller || scroller.dataset.scrollReady==='1') return;
+  scroller.dataset.scrollReady='1';
+  scroller.addEventListener('wheel',function(e){
     if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
       e.preventDefault();
-      bar.scrollLeft += e.deltaY;
+      scroller.scrollLeft += e.deltaY;
     }
   },{passive:false});
   let dragging=false,startX=0,startScroll=0,moved=false;
-  bar.addEventListener('pointerdown',function(e){
+  scroller.addEventListener('pointerdown',function(e){
     if(e.target.closest('a,button') && e.pointerType==='mouse') return;
-    dragging=true;moved=false;startX=e.clientX;startScroll=bar.scrollLeft;
+    dragging=true;moved=false;startX=e.clientX;startScroll=scroller.scrollLeft;
     bar.setPointerCapture?.(e.pointerId);
   });
-  bar.addEventListener('pointermove',function(e){
+  scroller.addEventListener('pointermove',function(e){
     if(!dragging) return;
     const dx=e.clientX-startX;
     if(Math.abs(dx)>4) moved=true;
-    bar.scrollLeft=startScroll-dx;
+    scroller.scrollLeft=startScroll-dx;
   });
   function stop(e){if(!dragging)return;dragging=false;try{bar.releasePointerCapture?.(e.pointerId)}catch(_){} }
-  bar.addEventListener('pointerup',stop);
-  bar.addEventListener('pointercancel',stop);
-  bar.addEventListener('mouseleave',function(){if(dragging) dragging=false;});
+  scroller.addEventListener('pointerup',stop);
+  scroller.addEventListener('pointercancel',stop);
+  scroller.addEventListener('mouseleave',function(){if(dragging) dragging=false;});
   const prev=bar.querySelector('.v2-score-prev');
   const next=bar.querySelector('.v2-score-next');
-  if(prev) prev.addEventListener('click',function(){bar.scrollBy({left:-430,behavior:'smooth'});});
-  if(next) next.addEventListener('click',function(){bar.scrollBy({left:430,behavior:'smooth'});});
+  if(prev) prev.addEventListener('click',function(){scroller.scrollBy({left:-430,behavior:'smooth'});});
+  if(next) next.addEventListener('click',function(){scroller.scrollBy({left:430,behavior:'smooth'});});
   function updateArrows(){
-    if(prev) prev.disabled=bar.scrollLeft<=2;
-    if(next) next.disabled=bar.scrollLeft+bar.clientWidth>=bar.scrollWidth-2;
+    if(prev) prev.disabled=scroller.scrollLeft<=2;
+    if(next) next.disabled=scroller.scrollLeft+scroller.clientWidth>=scroller.scrollWidth-2;
   }
-  bar.addEventListener('scroll',updateArrows,{passive:true});
+  scroller.addEventListener('scroll',updateArrows,{passive:true});
   window.addEventListener('resize',updateArrows);
   updateArrows();
 })();
@@ -1292,7 +1293,7 @@ document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click
     items.sort((a,b)=>a.date.localeCompare(b.date));games.innerHTML='';
     if(!items.length){const a=document.createElement('a');a.className='v2-score-card v2-score-empty';a.href=espnWeek(w,g);a.target='_blank';a.rel='noopener';a.innerHTML=`<strong>${g==='bigsky'?'Big Sky':'Top 25 FCS'} · Week ${w}</strong><small>Open ESPN scoreboard ↗</small>`;games.appendChild(a);}
     else items.forEach(x=>games.appendChild(card(x,w)));
-    games.scrollLeft=0;if(bar)bar.scrollLeft=0;
+    games.scrollLeft=0;
   }
   group.addEventListener('change',render);week.addEventListener('change',render);render();
 })();
