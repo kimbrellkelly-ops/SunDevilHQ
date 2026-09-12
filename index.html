@@ -57,6 +57,7 @@
     <a class="v2-go-griz" href="https://gogriz.com/" target="_blank" rel="noopener">🐾 Go Griz</a>
   </div>
   <div class="v2-scorebar" aria-label="Football scores and upcoming games">
+    <div class="v2-score-track">
     <div class="v2-score-filter"><b>FCS</b><span>⌄</span></div>
     <div class="v2-score-filter"><b>Week 2</b><span>⌄</span></div>
     <a class="v2-score-card" href="https://www.espn.com/college-football/scoreboard/_/week/2/year/2026/seasontype/2/group/20" target="_blank" rel="noopener"><small>Sat · 9:00 AM MT <b>ESPN+</b></small><strong>MSU <span>0–0</span></strong><strong>SAC <span>0–0</span></strong><em>ESPN scoreboard ↗</em></a>
@@ -66,6 +67,7 @@
     <a class="v2-score-card" href="https://www.espn.com/college-football/scoreboard/_/week/2/year/2026/seasontype/2/group/20" target="_blank" rel="noopener"><small>Sat · 1:00 PM MT <b>ACCNX</b></small><strong>UC DAVIS <span>2–0</span></strong><strong>SMU <span>1–0</span></strong><em>ESPN scoreboard ↗</em></a>
     <a class="v2-score-card" href="https://www.espn.com/college-football/scoreboard/_/week/2/year/2026/seasontype/2/group/20" target="_blank" rel="noopener"><small>Sat · 2:00 PM MT <b>ESPN+</b></small><strong>UNC <span>0–2</span></strong><strong>WYO <span>0–1</span></strong><em>ESPN scoreboard ↗</em></a>
     <button class="v2-score-next" type="button" aria-label="More scores">›</button>
+    </div>
   </div>
 </header>
 <main id="home">
@@ -1193,61 +1195,41 @@ document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click
 })();
 </script>
 
+
+
+
 <script>
 (function(){
-  const strip=document.querySelector('.v2-scorebar');
-  if(!strip || strip.dataset.edgeScrollReady==='2') return;
-  strip.dataset.edgeScrollReady='2';
-  const next=strip.querySelector('.v2-score-next');
-  let raf=0, speed=0;
-  function stop(){
-    speed=0;
-    strip.classList.remove('is-edge-scrolling');
-    if(raf){cancelAnimationFrame(raf);raf=0;}
-  }
-  function tick(){
-    if(!speed){raf=0;return;}
-    const before=strip.scrollLeft;
-    strip.scrollLeft += speed;
-    if(strip.scrollLeft===before || strip.scrollLeft<=0 || strip.scrollLeft>=strip.scrollWidth-strip.clientWidth){
-      if((speed<0 && strip.scrollLeft<=0)||(speed>0 && strip.scrollLeft>=strip.scrollWidth-strip.clientWidth)){stop();return;}
-    }
-    raf=requestAnimationFrame(tick);
-  }
-  function start(v){
-    speed=v;
-    strip.classList.add('is-edge-scrolling');
-    if(!raf) raf=requestAnimationFrame(tick);
-  }
-  document.addEventListener('mousemove',function(e){
-    const r=strip.getBoundingClientRect();
-    const insideY=e.clientY>=r.top && e.clientY<=r.bottom;
-    if(!insideY){stop();return;}
-    const edge=85;
-    const nearLeft=e.clientX<=edge || e.clientX<=r.left+edge;
-    const nearRight=e.clientX>=window.innerWidth-edge || e.clientX>=r.right-edge;
-    if(nearLeft && strip.scrollLeft>0) start(-5);
-    else if(nearRight && strip.scrollLeft<strip.scrollWidth-strip.clientWidth-1) start(5);
+  const viewport=document.querySelector('.v2-scorebar');
+  const track=viewport&&viewport.querySelector('.v2-score-track');
+  const next=viewport&&viewport.querySelector('.v2-score-next');
+  if(!viewport||!track||viewport.dataset.scrollReady==='1') return;
+  viewport.dataset.scrollReady='1';
+  viewport.scrollLeft=0;
+  let raf=0, speed=0, dragging=false, startX=0, startScroll=0;
+  const stop=()=>{speed=0;if(raf){cancelAnimationFrame(raf);raf=0;}};
+  const tick=()=>{if(!speed){raf=0;return;} viewport.scrollLeft+=speed; raf=requestAnimationFrame(tick);};
+  const start=v=>{speed=v;if(!raf)raf=requestAnimationFrame(tick);};
+  viewport.addEventListener('pointermove',e=>{
+    if(dragging) return;
+    const r=viewport.getBoundingClientRect(), zone=Math.min(180,Math.max(90,r.width*.18));
+    if(e.clientX<r.left+zone && viewport.scrollLeft>0) start(-Math.max(2,(r.left+zone-e.clientX)/zone*7));
+    else if(e.clientX>r.right-zone && viewport.scrollLeft<viewport.scrollWidth-viewport.clientWidth-1) start(Math.max(2,(e.clientX-(r.right-zone))/zone*7));
     else stop();
   });
-  strip.addEventListener('mouseleave',stop);
-  strip.addEventListener('wheel',function(e){
-    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
-      e.preventDefault();
-      strip.scrollLeft += e.deltaY;
-    }
+  viewport.addEventListener('pointerleave',stop);
+  viewport.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();viewport.scrollLeft+=e.deltaY;}
   },{passive:false});
-  if(next){
-    next.addEventListener('click',function(){
-      stop();
-      strip.scrollBy({left:Math.max(280,strip.clientWidth*.65),behavior:'smooth'});
-    });
-    next.setAttribute('title','Show more scores');
-  }
-  // Always begin at the first game when the page is freshly loaded.
-  requestAnimationFrame(()=>{strip.scrollLeft=0;});
+  viewport.addEventListener('pointerdown',e=>{
+    if(e.target.closest('a,button')) return;
+    dragging=true; startX=e.clientX; startScroll=viewport.scrollLeft; stop(); viewport.setPointerCapture?.(e.pointerId);
+  });
+  viewport.addEventListener('pointermove',e=>{if(dragging)viewport.scrollLeft=startScroll-(e.clientX-startX);});
+  const endDrag=()=>{dragging=false;};
+  viewport.addEventListener('pointerup',endDrag); viewport.addEventListener('pointercancel',endDrag);
+  next&&next.addEventListener('click',()=>{stop();viewport.scrollBy({left:Math.max(300,viewport.clientWidth*.7),behavior:'smooth'});});
 })();
 </script>
-
 </body>
 </html>

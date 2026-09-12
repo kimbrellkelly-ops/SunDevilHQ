@@ -4329,3 +4329,11 @@ footer{background:var(--maroon);color:#fff;padding:30px max(25px,calc((100% - 15
   .v2-scorebar{scroll-snap-type:x proximity}
   .v2-score-card{scroll-snap-align:start}
 }
+
+/* Phase 2C final scoreboard carousel repair */
+.v2-scorebar{display:block!important;position:relative;overflow:hidden!important;padding:10px 24px 14px!important;scroll-behavior:auto!important;}
+.v2-score-track{display:flex;align-items:stretch;gap:8px;width:max-content;min-width:100%;overflow:visible;}
+.v2-score-track .v2-score-card,.v2-score-track .v2-score-filter,.v2-score-track .v2-score-next{flex:0 0 auto;}
+.v2-scorebar{cursor:grab;touch-action:pan-y;}
+.v2-scorebar:active{cursor:grabbing;}
+@media(max-width:800px){.v2-scorebar{padding:8px 12px!important;overflow:hidden!important;}.v2-score-track{gap:8px;}}
