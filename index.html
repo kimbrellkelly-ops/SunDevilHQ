@@ -1192,5 +1192,37 @@ document.querySelectorAll('.roster-filter').forEach(b=>b.addEventListener('click
   dropdown.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
 })();
 </script>
+
+<script>
+(function(){
+  const bar=document.querySelector('.v2-scorebar');
+  if(!bar || bar.dataset.scrollReady==='1') return;
+  bar.dataset.scrollReady='1';
+  bar.addEventListener('wheel',function(e){
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
+      e.preventDefault();
+      bar.scrollLeft += e.deltaY;
+    }
+  },{passive:false});
+  let dragging=false,startX=0,startScroll=0,moved=false;
+  bar.addEventListener('pointerdown',function(e){
+    if(e.target.closest('a,button') && e.pointerType==='mouse') return;
+    dragging=true;moved=false;startX=e.clientX;startScroll=bar.scrollLeft;
+    bar.setPointerCapture?.(e.pointerId);
+  });
+  bar.addEventListener('pointermove',function(e){
+    if(!dragging) return;
+    const dx=e.clientX-startX;
+    if(Math.abs(dx)>4) moved=true;
+    bar.scrollLeft=startScroll-dx;
+  });
+  function stop(e){if(!dragging)return;dragging=false;try{bar.releasePointerCapture?.(e.pointerId)}catch(_){} }
+  bar.addEventListener('pointerup',stop);
+  bar.addEventListener('pointercancel',stop);
+  bar.addEventListener('mouseleave',function(){if(dragging) dragging=false;});
+  const next=bar.querySelector('.v2-score-next');
+  if(next) next.addEventListener('click',function(){bar.scrollBy({left:430,behavior:'smooth'});});
+})();
+</script>
 </body>
 </html>
