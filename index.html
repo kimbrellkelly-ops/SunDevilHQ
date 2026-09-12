@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Griz HQ | Montana Football</title>
 <meta content="Griz HQ — a fan-built Montana Grizzlies football information hub." name="description"/>
-<link href="styles.css?v=20260906-news3" rel="stylesheet"/>
+<link href="styles.css?v=20260912-v2stage1" rel="stylesheet"/>
 <script defer="" src="app.js?v=20260909-fcs-missing-logos1"></script>
 <script defer="" src="rankings-team-logos.js"></script>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -44,9 +44,23 @@
       <a data-tab-link="schedule" href="#schedule">Schedule</a>
       <a data-tab-link="roster" href="#roster">Roster</a>
       <a data-tab-link="stats" href="#stats">Stats</a>
-      <a data-tab-link="schedule" href="#big-sky">Big Sky</a>
+      <div class="v2-nav-menu">
+        <button class="v2-nav-trigger" type="button" aria-expanded="false">Big Sky <span>⌄</span></button>
+        <div class="v2-nav-dropdown" role="menu">
+          <a data-tab-link="schedule" href="#big-sky" role="menuitem">Conference Schedule</a>
+          <a data-tab-link="scores" href="#fcs-scores" role="menuitem">Big Sky Scores</a>
+          <a data-tab-link="rankings" href="#rankings" role="menuitem">Conference Race</a>
+        </div>
+      </div>
       <a data-tab-link="media" href="#media">Media</a>
-      <a data-tab-link="history" href="#history">More⌄</a>
+      <div class="v2-nav-menu">
+        <button class="v2-nav-trigger" type="button" aria-expanded="false">More <span>⌄</span></button>
+        <div class="v2-nav-dropdown" role="menu">
+          <a data-tab-link="history" href="#history" role="menuitem">The Vault / History</a>
+          <a href="officiating.html" role="menuitem">Officiating Lab</a>
+          <a href="https://gogriz.com/" target="_blank" rel="noopener" role="menuitem">Official GoGriz</a>
+        </div>
+      </div>
     </nav>
     <a class="v2-go-griz" href="https://gogriz.com/" target="_blank" rel="noopener">🐾 Go Griz</a>
   </div>
